@@ -1,0 +1,12 @@
+---
+name: "arcgis-web-appbuilder"
+version: "0.1.0"
+description: "A Helm chart for deploying ArcGIS Web Appbuilder"
+home: "https://github.com/City-of-Bloomington/arcgis-web-appbuilder"
+apiVersion: "v1"
+appVersion: "2.12"
+keywords:
+  - "nodejs"
+  - "arcgis"
+  - "cob"
+...
