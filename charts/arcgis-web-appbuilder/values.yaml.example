@@ -23,4 +23,18 @@ service:
 # adjust the hostnames below to your needs
 ingress:
   enabled: false
+
+ingress:
+  enabled: true
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: kubeproxy.bloomington.in.gov
+      paths: ["/"]
+
+  tls:
+    - secretName: cert-wildcard
+      hosts:
+        - kubeproxy.bloomington.in.gov
 ...
