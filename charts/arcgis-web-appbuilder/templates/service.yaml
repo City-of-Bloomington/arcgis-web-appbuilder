@@ -15,7 +15,7 @@ spec:
   {{- end }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: 80
+      targetPort: 3345
       protocol: TCP
       name: http
   selector:

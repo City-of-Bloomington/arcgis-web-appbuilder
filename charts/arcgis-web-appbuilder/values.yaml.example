@@ -6,16 +6,22 @@
 replicaCount: 1
 
 image:
-  repository: <your-docker-repo>/open311-nodejs
+  repository: <your-docker-repo>/arcgis-web-appbuilder
   tag: <tag here>
   pullPolicy: IfNotPresent
 
+environment:
+  serverPath: server
+  serverjsFile: server.js
+  port: "80"
+  wabVirtualPath: webappbuilder
+  portTaken: "0"
 
 service:
-  type: LoadBalancer
+  type: ClusterIP
 
   # only uncomment if you want static assignment from your LB
-  # we use MetalLB, so you may have to adjust the service type to fit your needs
+  # and are using LoadBalancer service type
   #loadBalancerIP: "x.x.x.x"
 
   port: 80
@@ -23,18 +29,13 @@ service:
 # adjust the hostnames below to your needs
 ingress:
   enabled: false
-
-ingress:
-  enabled: true
   annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: kubeproxy.bloomington.in.gov
+    - host: your-desired-hostname.com
       paths: ["/"]
 
   tls:
     - secretName: cert-wildcard
       hosts:
-        - kubeproxy.bloomington.in.gov
+        - your-desired-hostname.com
 ...
